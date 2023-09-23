@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>artigos</title>
+</head>
+<body style="background-color: black;">
+    <pre style="text-align: center; color:white">
+         █████╗ ██████╗ ████████╗██╗ ██████╗  ██████╗ ███████╗
+        ██╔══██╗██╔══██╗╚══██╔══╝██║██╔════╝ ██╔═══██╗██╔════╝
+        ███████║██████╔╝   ██║   ██║██║  ███╗██║   ██║███████╗
+        ██╔══██║██╔══██╗   ██║   ██║██║   ██║██║   ██║╚════██║
+        ██║  ██║██║  ██║   ██║   ██║╚██████╔╝╚██████╔╝███████║
+        ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝
+                                                                                
+    </pre>
+
+</br>
+    <div name="google-dorking">
+        <pre style="color:white;font-family: monospace;">
+    <h2 style="color: red; font-family: monospace">AVISO LEGAL: o conhecimento passado aqui é para fins educacionais.
+o mal uso de tais informações não é de nossa responsabilidade.</h2>
+<h2 style="color:rgb(8, 46, 235);font-family: monospace;">[*] Algumas técnicas úteis de Google Dorking</h2>
+    se você pretende haska algo, é importante saber onde e como procurar.
+    Vou criar um tópico só sobre OSINT depois mas por agora, saiba que a
+    ferramenta de busca do google vai ser sua melhor amiga no quesito:
+    <strong>enumerar um alvo.</strong>
+    de forma bastante resumida, dorkar algo no google é indicar para 
+    algoritmo de busca que estamos buscando por determinado padrão.
+    Esses padrões podem ser: parâmentros na url, determinado diretório,
+    palavras chaves, arquivos, entre outros...
+    isso pode ser muito útil para acharmos falhas como sql injection por
+    exemplo. Abaixo deixarei alguns exemplos tal como suas respectivas
+    descrições:
+        </pre>
+<h4 style="color:green;font-family: monospace;">> sqli dorking</h4>
+<pre style="color:red">     home.php?cat=</pre>
+<pre style="color:red">     view_items.php?id=</pre>
+<pre style="color:red">     news.php?ID=</pre>
+<pre style="color:red">     gallery.php?id=</pre>
+
+    <pre style="color:white;font-family: monospace;">
+            |_ descrição: estamos passando para o mecanismo de busca que queremos encontrar sites
+            que usam php e que recebam parâmetros sendo passados pela url. Supondo que você entra em algum
+            site que use alguns dos parâmetros acima e passa um ' como parâmentro. Caso o site "quebre" e
+            apareça um erro como:
+            <strong>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server 
+            version for the right syntax to use near ''' at line 1</strong>
+            é bem possível que esse site ainda seja vulneravel a slq injection.
+    </pre>
+
+    <h4 style="color:green;font-family: monospace;">> procurando por arquivos</h4>
+<pre style="color:red">"passwords" filetype:txt</pre>
+<pre style="color:red">"book" + "of" + "instructions" filetype:pdf</pre>
+    <pre style="color:white;font-family: monospace;">
+            |_ descrição: o google busca por uma (ou mais) palavra/palavras chave especificada em sites que contenham
+            arquivos do tipo que você especificou no "filetype:".
+    </pre>
+
+    <h4 style="color:green;font-family: monospace;">> procurando por palavras chaves no título</h4>
+<pre style="color:red">intitle:venda</pre>
+<pre style="color:red">intitle:para alugar</pre>
+    <pre style="color:white;font-family: monospace;">
+            |_ descrição: o google busca por uma (ou mais) palavra/palavras chave especificada no título de sites.
+    </pre>
+    
+    <h4 style="color:green;font-family: monospace;">> procurando por diretórios</h4>
+<pre style="color:red">"index of" inurl:ftp</pre>
+<pre style="color:red">"index of" inurl:html</pre>
+    <pre style="color:white;font-family: monospace;">
+            |_ descrição: esse "index of" indica que estamos buscando por um diretório/pasta. <strong>inurl</strong> especifica
+            que estamos procurando por determinada palavra chave na url. Pode ser qualquer coisa, exemplo: caso estejamos
+            buscando por um diretório público de livros, podemos usar <strong>"index of" inurl:books</strong>
+    
+    </pre>
+
+    <h4 style="color:green;font-family: monospace;">> procurando por sites em especifico</h4>
+    <pre style="color:red">"site:target.com</pre>
+        <pre style="color:white;font-family: monospace;">
+                |_ descrição: podemos combinar as técnicas acima com esta. Caso procuremos por <strong>site:</strong> e
+                mais alguma coisa, estaremos indicando ao algoritmo de busca que estamos procurando algo em um site específico.
+        </pre>
+
+<pre style="color:white;font-family: monospace;">
+existem diversas outras formas de dorkar por informações porém, as mais utilizadas são essas acima.
+caso esteja procurando por algo em especifico, deixarei o link de um repositório de dorking que eu
+achei aqui pelo github. <a style="text-decoration: none;" href="https://raw.githubusercontent.com/Nabil-Official/N-WEB/main/files/sqli3.txt">clique aqui para ver mais</a>
+</pre>
+</div>
+</body>
+</html>
